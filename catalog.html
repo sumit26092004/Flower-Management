@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Management - Catalog</title>
+  <link rel="stylesheet" href="assets/css/catalog.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+      
+    </nav>
+  </header>
+  <div class="container" style="background-image: url('https://images.pexels.com/photos/2050994/pexels-photo-2050994.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080');">
+    <h1>Our Flower Catalog</h1>
+    <div class="catalog-horizontal">
+      <!-- Flower 1 -->
+      <div class="card" data-flower="Roses" data-price="10">
+        <img src="https://images.pexels.com/photos/357742/pexels-photo-357742.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Roses">
+        <h3>Roses</h3>
+        <p>Price: $10</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      
+      <!-- Flower 4 -->
+      <div class="card" data-flower="Daisies" data-price="6">
+        <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Daisies">
+        <h3>Daisies</h3>
+        <p>Price: $6</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 5 -->
+      <div class="card" data-flower="Lilies" data-price="15">
+        <img src="https://images.pexels.com/photos/462118/pexels-photo-462118.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Lilies">
+        <h3>Lilies</h3>
+        <p>Price: $15</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 6 -->
+      <div class="card" data-flower="Orchids" data-price="20">
+        <img src="https://images.pexels.com/photos/212942/pexels-photo-212942.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Orchids">
+        <h3>Orchids</h3>
+        <p>Price: $20</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 7 -->
+      <div class="card" data-flower="Marigolds" data-price="5">
+        <img src="https://images.pexels.com/photos/67636/pexels-photo-67636.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Marigolds">
+        <h3>Marigolds</h3>
+        <p>Price: $5</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 8 -->
+      <div class="card" data-flower="Peonies" data-price="18">
+        <img src="https://images.pexels.com/photos/113401/pexels-photo-113401.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Peonies">
+        <h3>Peonies</h3>
+        <p>Price: $18</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 9 -->
+      <div class="card" data-flower="Hydrangeas" data-price="22">
+        <img src="https://images.pexels.com/photos/159106/pexels-photo-159106.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Hydrangeas">
+        <h3>Hydrangeas</h3>
+        <p>Price: $22</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+      <!-- Flower 10 -->
+      <div class="card" data-flower="Jasmine" data-price="9">
+        <img src="https://images.pexels.com/photos/1303319/pexels-photo-1303319.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jasmine">
+        <h3>Jasmine</h3>
+        <p>Price: $9</p>
+        <button class="add-to-cart">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to add item to cart
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        const card = button.closest('.card');
+        const flower = card.getAttribute('data-flower');
+        const price = card.getAttribute('data-price');
+        
+        const item = {
+          flower,
+          price
+        };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+      });
+    });
+  </script>
+</body>
+</html>

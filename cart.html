@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="assets/css/cart.css">
+</head>
+<body>
+  <!-- Header  -->
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart</a>
+      
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <!-- Add your cart items  -->
+    <ul id="cart-items">
+      <!-- Example items  -->
+      <li>Flower 1 - $20 <button class="remove-btn">Remove</button></li>
+      <li>Flower 2 - $15 <button class="remove-btn">Remove</button></li>
+    </ul>
+    <div class="cart-total">
+      <h3>Total: $35</h3>
+      <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Payment Gateway Popup -->
+  <div class="popup" id="payment-popup">
+    <div class="popup-content">
+      <span class="close-btn" id="close-btn">&times;</span>
+      <h2>Payment Details</h2>
+      <form id="payment-form">
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="Enter your card number" required><br>
+        <label for="expiry-date">Expiry Date:</label>
+        <input type="month" id="expiry-date" required><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" placeholder="Enter CVV" required><br>
+        <button type="submit" class="submit-btn">Pay Now</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  
+  <!-- Script to open/close the popup -->
+  <script>
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const popup = document.getElementById('payment-popup');
+    const closeBtn = document.getElementById('close-btn');
+
+    // Open the payment popup
+    checkoutBtn.addEventListener('click', () => {
+      popup.style.display = 'flex';
+    });
+
+    // Close the payment popup
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    // Close popup if clicked outside
+    window.addEventListener('click', (event) => {
+      if (event.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+
+    // Handle payment form submission
+    document.getElementById('payment-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Payment successful!');
+      popup.style.display = 'none'; // Close the popup after successful payment
+    });
+  </script>
+</body>
+</html>
